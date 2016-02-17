@@ -1,0 +1,22 @@
+{
+  "name": "myapp",
+  "description": "mandatory assignment",
+  "main": "",
+  "authors": [
+    "Nicolai <nicolai.xs@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Henrikbj1990/Mandatory-MEAN",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "public/components"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0"
+  }
+}
