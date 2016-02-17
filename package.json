@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "myapp",
   "version": "0.0.0",
   "private": true,
@@ -15,3 +16,26 @@
     "serve-favicon": "~2.3.0"
   }
 }
+=======
+  "name": "myrepo",
+  "version": "1.0.0",
+  "description": "This is the repository for the mandatory assignment in Frameworks. WU16FW - Erhvervsakademi Aarhus\r It's a school-project that needs to be finished on May 25th",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Henrikbj1990/Mandatory-MEAN.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Henrikbj1990/Mandatory-MEAN/issues"
+  },
+  "homepage": "https://github.com/Henrikbj1990/Mandatory-MEAN#readme",
+  "dependencies": {
+    "bower": "^1.7.7"
+  }
+}
+>>>>>>> 152148606589107b7e5502842cf5b17badb98dcf
