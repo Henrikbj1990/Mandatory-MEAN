@@ -25,7 +25,6 @@ a {
 .panel-login>.panel-heading a {
     text-decoration: none;
     color: #666;
-    font-weight: bold;
     font-size: 15px;
     -webkit-transition: all 0.1s linear;
     -moz-transition: all 0.1s linear;
@@ -33,8 +32,9 @@ a {
 }
 
 .panel-login>.panel-heading a.active {
-    color: #029f5b;
-    font-size: 18px;
+    color: #666;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .panel-login>.panel-heading hr {
@@ -117,3 +117,15 @@ a {
     background-color: #1CA347;
     border-color: #1CA347;
 }
+    .navbar-brand-centered {
+        position: absolute;
+        left: 50%;
+        display: block;
+        width: 160px;
+        text-align: center;
+        background-color: transparent;
+    }
+    .navbar>.container .navbar-brand-centered, 
+    .navbar>.container-fluid .navbar-brand-centered {
+        margin-left: -80px;
+    }
