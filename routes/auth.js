@@ -15,3 +15,5 @@ router.get('/login', function(req, res, next) {
 });
 
 module.exports = router;
+
+/*Her skal ændres nogle routes. Den tjekker ikke i databasen efter brugere når man prøver at logge ind*/

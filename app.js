@@ -4,6 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+/*Tilføjet ifm passport
+var passport = require('passport');
+var session = require('express-session')*/
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -35,6 +38,11 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
+/* Tilføjet ifm. passport
+app.use(session({secret: 'library'}));
+require('./src/config/passport')(app);*/
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
