@@ -1,15 +1,19 @@
 doctype html
-html
+html(ng-app='admin')
   head
     title= title
 
     link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.css')
 
     script(src='/components/jquery/dist/jquery.js')
+    script(src='/components/angular/angular.min.js')
     script(src='/components/bootstrap/dist/js/bootstrap.js')
 
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/javascripts/script.js')
-  body
+  body(ng-controller='adminController')
     include nav.jade
     block content
+    script(src='../admin/admin.module.js')
+    script(src='../admin/admin.controller.js')
+    script(src='../admin/admin.service.js')
