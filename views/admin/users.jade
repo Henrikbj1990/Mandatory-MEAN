@@ -1,6 +1,22 @@
 extends ../layout
 
 block content
-    div(ng-repeat='user in users')
-      | {{user.username}}
+    table.table.userTable.table-bordered.table-striped
+      tr
+        th Username
+        th Email
+        th Edit
+        th Delete
+      tr(ng-repeat='user in users')
+        td {{user.username}}
+        td {{user.email}}
+        td
+            a.btn.btn-warning(href='#')
+              span.glyphicon.glyphicon-edit
+              |  Edit
+        td
+            a.btn.btn-danger(href='#', ng-click='deleteUser(user._id)')
+                span.glyphicon.glyphicon-fire
+                |  Delete
+
 

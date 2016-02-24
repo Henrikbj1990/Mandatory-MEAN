@@ -10,8 +10,19 @@
                 });
         };
 
+        var deleteUser = function (id) {
+            console.log(id);
+            return $http.delete('http://localhost:3000/users/' + id)
+                .then(function successCallback(response) {
+                    console.log("user was deleted");
+                }, function errorCallback(response) {
+                    console.log(response);
+                });
+        };
+
         return {
-            getUsers: getUsers
+            getUsers: getUsers,
+            deleteUser: deleteUser
         };
     }
 

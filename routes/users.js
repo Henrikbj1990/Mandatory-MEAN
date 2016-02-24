@@ -3,7 +3,6 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-/* GET users listing. */
 router.get('/', function (req, res, next) {
     User.find(function (err, users) {
         console.log('debug2');
@@ -12,6 +11,20 @@ router.get('/', function (req, res, next) {
         }
         return res.send(200, users);
     });
+});
+
+router.delete('/:id', function (req, res) {
+    User.remove({
+        _id: req.params.id
+    }, function (err) {
+        if (err)
+            res.send(err);
+        res.json("deleted :(");
+    });
+});
+
+router.get('/test/', function (req, res) {
+    res.send('Got a DELETE request at /user');
 });
 
 module.exports = router;
