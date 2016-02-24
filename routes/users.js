@@ -23,8 +23,4 @@ router.delete('/:id', function (req, res) {
     });
 });
 
-router.get('/test/', function (req, res) {
-    res.send('Got a DELETE request at /user');
-});
-
 module.exports = router;
