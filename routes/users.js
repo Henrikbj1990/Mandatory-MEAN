@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
         if (err) {
             return res.send(500, err);
         }
-        return res.send(200, users);
+        return res.status(200).send(users);
     });
 });
 
