@@ -3,18 +3,20 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var passport = require('passport');
+var session = require('express-session');
 var bodyParser = require('body-parser');
-
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var auth = require('./routes/auth');
-
-var app = express();
 
 require('./models/models');
 
+var routes = require('./routes/index');
+var users = require('./routes/users');
+var auth = require('./routes/auth')(passport);
+
+var app = express();
+
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/testing');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -35,12 +37,19 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
+app.use(session({
+    secret: 'library'
+}));
+
+require('./src/config/passport')(app);
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
-auth.use('/register', auth);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

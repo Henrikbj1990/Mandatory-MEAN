@@ -1,47 +1,29 @@
 var express = require('express');
 var router = express.Router();
+module.exports = function (passport) {
 
-router.get('/', function (req, res, next) {
-    res.send('auth routes');
-});
+    //    router.route('/register')
+    //        .get(function (req, res, next) {
+    //            res.send('here you register');
+    //        })
+    //        .post(function (req, res, next) {
+    //            var username = req.body['username'];
+    //            res.send('Hello ' + username + '!');
+    //            console.log(req.body);
+    //        });
 
-var passport = require('passport');
-
-module.exports = function (app) {
-
-    app.get('/', function (req, res) {
-        res.render('index', {
-            user: req.user
-        });
+    router.get('/login', function (req, res, next) {
+        res.send('respond with a resource');
     });
+    router.post('/login', passport.authenticate('login', {
+        successRedirect: '../',
+        failureRedirect: '/login'
+    }));
+    router.post('/register', passport.authenticate('signup', {
+        successRedirect: './',
+        failureRedirect: '/login'
+    }));
 
-    app.get('/register', function (req, res) {
-        res.render('register', {});
-    });
 
-    app.post('/register', function (req, res) {
-        res.send('du trykkede på register.. nice');
-    });
-
-    app.get('/login', function (req, res) {
-        res.render('login', {
-            user: req.user
-        });
-    });
-
-    app.post('/login', passport.authenticate('local'), function (req, res) {
-        res.redirect('/');
-    });
-
-    app.get('/logout', function (req, res) {
-        req.logout();
-        res.redirect('/');
-    });
-
-    app.get('/ping', function (req, res) {
-        res.send("pong!", 200);
-    });
-
-};
-
-module.exports = router;
+    return router;
+}
