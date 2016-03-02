@@ -1,17 +1,18 @@
 extends ../layout
 
 block content
-    .col-md-12
-      .panel.with-nav-tabs.panel-primary
-        .panel-heading
-          ul.nav.nav-tabs
-            li
-              a(href='#/showUsers', data-toggle='tab') Show Users
-            li
-              a(href='#/newUser', data-toggle='tab') New User
-        .panel-body
-          .tab-content
-            ng-view
+    div(ng-app='admin')
+        .col-md-12
+          .panel.with-nav-tabs.panel-primary
+            .panel-heading
+              ul.nav.nav-tabs
+                li
+                  a(href='#/showUsers', data-toggle='tab') Show Users
+                li
+                  a(href='#/newUser', data-toggle='tab') New User
+            .panel-body
+              .tab-content
+                ng-view
         
     script(src='/admin/admin.module.js')
     script(src='/admin/admin.controller.js')
