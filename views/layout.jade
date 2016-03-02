@@ -11,9 +11,10 @@ html(ng-app='admin')
 
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/javascripts/script.js')
+    script(src='/admin/admin.module.js')
+    script(src='/admin/admin.controller.js')
+    script(src='/admin/admin.service.js')
   body(ng-controller='adminController')
     include nav.jade
     block content
-    script(src='../admin/admin.module.js')
-    script(src='../admin/admin.controller.js')
-    script(src='../admin/admin.service.js')
+

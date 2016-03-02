@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var bCrypt = require('bcrypt-nodejs');
 
 router.get('/', function (req, res, next) {
     User.find(function (err, users) {
@@ -22,5 +23,48 @@ router.delete('/:id', function (req, res) {
         res.json("deleted :(");
     });
 });
+
+router.post('/', function (req, res) {
+    console.log("getting parameters")
+    var username = req.param('username');
+    var password = req.param('password');
+    console.log("finding user " + username);
+    User.findOne({
+        'username': username
+    }, function (err, user) {
+        // In case of any error, return using the done method
+        if (err) {
+            console.log('Error in creation: ' + err);
+        }
+        // already exists
+        if (user) {
+            console.log('User already exists with username: ' + username);
+        } else {
+            // if there is no user, create the user
+            var newUser = new User();
+
+            // set the user's local credentials
+            newUser.username = username;
+            newUser.email = req.param('email');
+            newUser.password = createHash(password);
+
+            // save the user
+            newUser.save(function (err) {
+                if (err) {
+                    console.log('Error in Saving user: ' + err);
+                }
+                console.log(newUser.username + ' created succesful with email: ' + newUser.email);
+                res.redirect('/admin/users/');
+            });
+        }
+    });
+
+});
+
+
+// Generates hash using bCrypt
+var createHash = function (password) {
+    return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+};
 
 module.exports = router;

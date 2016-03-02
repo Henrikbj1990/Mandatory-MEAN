@@ -12,7 +12,7 @@
 
         var deleteUser = function (id) {
             console.log(id);
-            return $http.delete('http://localhost:3000/users/' + id)
+            return $http.delete('../users/' + id)
                 .then(function successCallback(response) {
                     console.log("user was deleted");
                 }, function errorCallback(response) {
