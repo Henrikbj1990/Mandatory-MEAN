@@ -20,9 +20,20 @@
                 });
         };
 
+        var editUser = function (id) {
+
+            return $http.get('../users/editUser/' + id)
+                .then(function successCallback(res) {
+                    console.log(res);
+                }, function errorCallback(response) {
+                    console.log(response);
+                });
+        }
+
         return {
             getUsers: getUsers,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            editUser: editUser
         };
     }
 

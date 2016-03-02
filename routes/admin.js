@@ -18,15 +18,5 @@ router.get('/newUser/',
         });
     });
 
-router.delete('/:id', function (req, res) {
-    User.remove({
-        _id: req.params.id
-    }, function (err) {
-        if (err)
-            res.send(err);
-        res.json("deleted :(");
-    });
-});
-
 
 module.exports = router;

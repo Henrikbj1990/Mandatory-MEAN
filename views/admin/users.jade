@@ -1,22 +1,19 @@
 extends ../layout
 
 block content
-    table.table.userTable.table-bordered.table-striped
-      tr
-        th Username
-        th Email
-        th Edit
-        th Delete
-      tr(ng-repeat='user in users')
-        td {{user.username}}
-        td {{user.email}}
-        td
-            a.btn.btn-warning(href='#')
-              span.glyphicon.glyphicon-edit
-              |  Edit
-        td
-            a.btn.btn-danger(href='#', ng-click='deleteUser(user._id)')
-                span.glyphicon.glyphicon-fire
-                |  Delete
-    a.btn.btn-block.btn-primary(href='newUser/') Create User
-
+    .col-md-12
+      .panel.with-nav-tabs.panel-primary
+        .panel-heading
+          ul.nav.nav-tabs
+            li
+              a(href='#/showUsers', data-toggle='tab') Show Users
+            li
+              a(href='#/newUser', data-toggle='tab') New User
+        .panel-body
+          .tab-content
+            ng-view
+        
+    script(src='/admin/admin.module.js')
+    script(src='/admin/admin.controller.js')
+    script(src='/admin/admin.service.js')
+    

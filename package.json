@@ -1,0 +1,34 @@
+{
+  "name": "myrepos",
+  "version": "1.0.0",
+  "description": "This is the repository for the mandatory assignment in Frameworks. WU16FW - Erhvervsakademi Aarhus\r It's a school-project that needs to be finished on May 25th",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.13.3",
+    "bower": "^1.7.7",
+    "cookie-parser": "^1.4.1",
+    "debug": "^2.2.0",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "jade": "^1.11.0",
+    "mongoose": "^4.4.3",
+    "morgan": "^1.6.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Henrikbj1990/Mandatory-MEAN.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+

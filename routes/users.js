@@ -24,11 +24,24 @@ router.delete('/:id', function (req, res) {
     });
 });
 
+router.get('/editUser/:id', function (req, res, next) {
+    User.findOne({
+            '_id': req.params.id
+        },
+        function (err, user) {
+            res.json({
+                title: "Edit User",
+                name: user.username,
+                email: user.email,
+                password: user.password
+            });
+        });
+});
+
 router.post('/', function (req, res) {
-    console.log("getting parameters")
     var username = req.param('username');
     var password = req.param('password');
-    console.log("finding user " + username);
+
     User.findOne({
         'username': username
     }, function (err, user) {
@@ -54,7 +67,7 @@ router.post('/', function (req, res) {
                     console.log('Error in Saving user: ' + err);
                 }
                 console.log(newUser.username + ' created succesful with email: ' + newUser.email);
-                res.redirect('/admin/users/');
+                res.redirect('/admin/users');
             });
         }
     });

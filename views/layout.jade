@@ -6,15 +6,13 @@ html(ng-app='admin')
     link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.css')
 
     script(src='/components/jquery/dist/jquery.js')
-    script(src='/components/angular/angular.min.js')
+    script(src='/components/angular/angular.js')
+    script(src='/components/angular-route/angular-route.min.js')
     script(src='/components/bootstrap/dist/js/bootstrap.js')
 
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/javascripts/script.js')
-    script(src='/admin/admin.module.js')
-    script(src='/admin/admin.controller.js')
-    script(src='/admin/admin.service.js')
-  body(ng-controller='adminController')
+  body
     include nav.jade
     block content
 

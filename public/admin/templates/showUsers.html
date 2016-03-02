@@ -1,0 +1,13 @@
+<table class="table userTable table-bordered table-striped">
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr ng-repeat="user in users">
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td><a href="#/" ng-click="editUser(user._id)" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+        <td><a href="#/" ng-click="deleteUser(user._id)" class="btn btn-danger"><span class="glyphicon glyphicon-fire"></span> Delete</a></td>
+    </tr>
