@@ -198,3 +198,8 @@ th {
 .panel.with-nav-tabs .nav-justified {
     margin-bottom: -1px;
 }
+
+.panel-body .btn:not(.btn-block) {
+    width: 120px;
+    margin-bottom: 10px;
+}
