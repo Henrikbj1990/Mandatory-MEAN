@@ -36,7 +36,13 @@
 
         $scope.saveUser = function () {
             usersService.saveUser($scope.user).then(function () {
-                $window.location.href = '/admin/users/';
+                getUsers();
+            });
+        };
+
+        $scope.createUser = function () {
+            usersService.saveUser($scope.user).then(function () {
+                $window.location.href = "#/Users";
             });
         };
 
