@@ -11,12 +11,13 @@ router.get('/users/',
         });
     });
 
-router.get('/newUser/',
-    function (req, res, next) {
-        res.render('admin/newUser', {
-            title: 'New User'
-        });
+router.get('/users/:id', function (req, res, next) {
+    User.findOne({
+        _id: req.params.id
+    }, function (err, data) {
+        res.json(data);
     });
+});
 
 
 module.exports = router;

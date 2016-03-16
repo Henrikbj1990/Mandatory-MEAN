@@ -1,24 +1,24 @@
 (function () {
     "use strict";
 
-    var admin = angular.module("admin", ['ngRoute']);
+    var admin = angular.module("admin", ["admin.users", "ngRoute", "ngResource"]);
     admin.config(function ($routeProvider) {
 
         $routeProvider
 
             .when('/editUser', {
                 templateUrl: 'templates/editUser.html',
-                controller: 'adminController'
+                controller: 'usersController'
             })
             .when('/', {
 
                 templateUrl: 'templates/showUsers.html',
-                controller: 'adminController'
+                controller: 'usersController'
             })
             .when('/newUser', {
 
                 templateUrl: 'templates/newUser.html',
-                controller: 'adminController'
+                controller: 'usersController'
             })
             .otherwise({
                 redirectTo: '/'

@@ -14,64 +14,26 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.delete('/:id', function (req, res) {
-    User.remove({
+router.get('/:id', function (req, res, next) {
+    User.findOne({
         _id: req.params.id
-    }, function (err) {
-        if (err)
-            res.send(err);
-        res.json("deleted :(");
+    }, function (err, data) {
+        res.json(data);
     });
 });
 
-router.get('/editUser/:id', function (req, res, next) {
-    User.findOne({
-            '_id': req.params.id
-        },
-        function (err, user) {
-            res.json({
-                title: "Edit User",
-                name: user.username,
-                email: user.email,
-                password: user.password
-            });
-        });
-});
-
-router.post('/', function (req, res) {
-    var username = req.param('username');
-    var password = req.param('password');
-
-    User.findOne({
-        'username': username
-    }, function (err, user) {
-        // In case of any error, return using the done method
+router.delete('/:id', function (req, res, next) {
+    User.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
-            console.log('Error in creation: ' + err);
-        }
-        // already exists
-        if (user) {
-            console.log('User already exists with username: ' + username);
+            res.json({
+                err: err
+            });
         } else {
-            // if there is no user, create the user
-            var newUser = new User();
-
-            // set the user's local credentials
-            newUser.username = username;
-            newUser.email = req.param('email');
-            newUser.password = createHash(password);
-
-            // save the user
-            newUser.save(function (err) {
-                if (err) {
-                    console.log('Error in Saving user: ' + err);
-                }
-                console.log(newUser.username + ' created succesful with email: ' + newUser.email);
-                res.redirect('/admin/users');
+            res.json({
+                err: false
             });
         }
     });
-
 });
 
 
