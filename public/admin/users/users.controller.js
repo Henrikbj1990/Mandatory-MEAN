@@ -36,7 +36,7 @@
 
         $scope.saveUser = function () {
             usersService.saveUser($scope.user).then(function () {
-                $window.location.href = '/admin/index.html';
+                $window.location.href = '/admin/users/';
             });
         };
 

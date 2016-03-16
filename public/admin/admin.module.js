@@ -6,18 +6,14 @@
 
         $routeProvider
 
-            .when('/editUser', {
-                templateUrl: 'templates/editUser.html',
-                controller: 'usersController'
-            })
             .when('/', {
 
-                templateUrl: 'templates/showUsers.html',
+                templateUrl: '/admin/templates/showUsers.html',
                 controller: 'usersController'
             })
             .when('/newUser', {
 
-                templateUrl: 'templates/newUser.html',
+                templateUrl: '/admin/templates/newUser.html',
                 controller: 'usersController'
             })
             .otherwise({

@@ -3,7 +3,7 @@
 
     function usersService($http, $resource) {
 
-        var User = $resource("../users/:id", {
+        var User = $resource("/users/:id", {
             id: '@_id'
         });
 
@@ -14,7 +14,7 @@
         };
 
         var getUsers = function () {
-            return $http.get('../users/')
+            return $http.get('/users/')
                 .then(function (res) {
                     return res.data;
                 });
