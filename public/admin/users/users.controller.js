@@ -5,7 +5,7 @@
         .module("admin.users", [])
         .controller("usersController", usersController);
 
-    function usersController($scope, usersService) {
+    function usersController($scope, usersService, $window) {
 
         var getUsers = function () {
             usersService.getUsers().then(function (users) {
@@ -36,12 +36,11 @@
 
         $scope.saveUser = function () {
             usersService.saveUser($scope.user).then(function () {
-                getUsers();
+                $window.location.href = '/admin/index.html';
             });
         };
 
         $scope.deleteUser = function (id) {
-            console.log("delete user")
             usersService.deleteUser(id).then(function () {
                 getUsers();
             });

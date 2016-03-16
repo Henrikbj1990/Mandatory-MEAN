@@ -25,7 +25,6 @@
         };
 
         var deleteUser = function (id) {
-            console.log("delete user")
             return User.remove({
                 id: id
             }).$promise;

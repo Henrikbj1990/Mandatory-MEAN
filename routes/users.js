@@ -36,6 +36,32 @@ router.delete('/:id', function (req, res, next) {
     });
 });
 
+router.post('/', function (req, res, next) {
+    User.create(req.body, function (err, data) {
+        if (err) {
+            console.error(err);
+            return
+        }
+        res.json(data);
+    });
+});
+
+router.post('/:id', function (req, res, next) {
+    var query = {
+        _id: req.params.id
+    };
+    User.findOneAndUpdate(query, req.body, function (err, data) {
+        if (err) {
+            res.json({
+                err: err
+            });
+        } else {
+            res.json({
+                err: false
+            });
+        }
+    });
+});
 
 // Generates hash using bCrypt
 var createHash = function (password) {
