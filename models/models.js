@@ -10,8 +10,8 @@ var userSchema = new mongoose.Schema({
 var articleSchema = new mongoose.Schema({
     created_by: String,
     created_at: String,
-    Title: String,
-    Body: String
+    title: String,
+    body: String
 });
 
 mongoose.model('User', userSchema);

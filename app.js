@@ -11,6 +11,7 @@ require('./models/models');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var articles = require('./routes/articles');
 var admin = require('./routes/admin');
 var auth = require('./routes/auth')(passport);
 
@@ -49,6 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/articles', articles);
 app.use('/auth', auth);
 app.use('/admin', admin);
 

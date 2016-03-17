@@ -15,9 +15,9 @@ router.get('/login', function (req, res, next) {
     });
 });
 
-router.get('/articles', function (req, res, next) {
-    res.render('articles', {
-        title: 'Articles'
+router.get('/contents', function (req, res, next) {
+    res.render('contents', {
+        title: 'Contents'
     });
 });
 
