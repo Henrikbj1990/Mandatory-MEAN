@@ -7,4 +7,12 @@ var userSchema = new mongoose.Schema({
     password: String //hash created from password
 });
 
+var articleSchema = new mongoose.Schema({
+    created_by: String,
+    created_at: String,
+    Title: String,
+    Body: String
+});
+
 mongoose.model('User', userSchema);
+mongoose.model('Article', articleSchema);
