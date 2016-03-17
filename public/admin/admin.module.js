@@ -31,7 +31,6 @@
         })
 
         .when('/', {
-
                 templateUrl: '/admin/dashboard/view.html',
                 controller: 'dashboardController'
             })

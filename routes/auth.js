@@ -2,18 +2,36 @@ var express = require('express');
 var router = express.Router();
 module.exports = function (passport) {
 
-    router.get('/login', function (req, res, next) {
-        res.send('respond with a resource');
-    });
     router.post('/login', passport.authenticate('login', {
-        successRedirect: '../',
+        successRedirect: '/profile',
         failureRedirect: '/login'
     }));
     router.post('/register', passport.authenticate('signup', {
-        successRedirect: './',
+        successRedirect: '/',
         failureRedirect: '/login'
     }));
 
-
+router.route('/profile')
+        .all(function (req, res, next) {
+            if (!req.user) {
+                res.redirect('/');
+            }
+            next();
+        })
+        .get(function (req, res) {
+            res.json(req.user);
+        });
+    
+router.route('/admin/*')
+        .all(function (req, res, next) {
+            if (!req.user) {
+                res.redirect('/');
+            }
+            next();
+        })
+        .get(function (req, res) {
+            res.redirect('/admin/admin.html');
+        });
+    
     return router;
 }

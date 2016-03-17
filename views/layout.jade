@@ -8,11 +8,12 @@ html
     script(src='/components/jquery/dist/jquery.js')
     script(src='/components/angular/angular.js')
     script(src='/components/angular-route/angular-route.min.js')
+    script(src='/components/angular-resource/angular-resource.min.js')
     script(src='/components/bootstrap/dist/js/bootstrap.js')
 
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/javascripts/script.js')
-  body
+  body()
     include nav.jade
     block content
 
