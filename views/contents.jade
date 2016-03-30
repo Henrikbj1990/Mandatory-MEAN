@@ -2,12 +2,12 @@ extends layout
 
 block content
     .container
-        .col-md-12(ng-repeat='user in users track by $index')
-            h1 {{user.username}}
+        .col-md-12(ng-repeat='article in articles')
+            h1 {{article.title}}
             p
-              {{user.email}}
+              {{article.body}}
             div
-              span.badge Posted {{user.username}}
+              span.badge Posted {{article.created_at}}
               .pull-right
                 span.label.label-default alice
                 &nbsp;
@@ -21,3 +21,5 @@ block content
                 &nbsp;
                 span.label.label-danger Danger
             hr
+
+

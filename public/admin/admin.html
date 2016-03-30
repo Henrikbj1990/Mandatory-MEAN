@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title></title>
+    <title>Admin</title>
     <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.css">
 
     <link rel="stylesheet" href="/stylesheets/style.css">
@@ -10,36 +10,7 @@
 
 <body ng-app="admin">
     <div>
-        <nav role="navigation" class="navbar navbar-default">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display-->
-                <div class="navbar-header">
-                    <button type="button" data-toggle="collapse" data-target="#navbar-brand-centered" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    <div class="navbar-brand navbar-brand-centered">
-                        <p></p>
-                    </div>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling-->
-                <div id="navbar-brand-centered" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/contents">Articles</a></li>
-                        <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Search<span class="caret"></span></a>
-                            <ul role="menu" class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/login">Login / Register</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <ng-include src="'../partials/navigation.html'"></ng-include>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

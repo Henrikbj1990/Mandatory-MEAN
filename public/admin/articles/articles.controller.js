@@ -29,14 +29,18 @@
         $scope.createArticle = function () {
             var userName = "";
             var currentUser = usersService.getCurrentUser().then(function (user) {
-            userName = user.username;
+                userName = user.username;
 
-            $scope.article.created_by = userName;
-            $scope.article.created_at = new Date();
-            articlesService.saveArticle($scope.article).then(function () {
-                $window.location.href = "#/Articles";
+                $scope.article.created_by = userName;
+                var d = new Date();
+                var curr_date = d.getDate();
+                var curr_month = d.getMonth() + 1; //Months are zero based
+                var curr_year = d.getFullYear();
+                $scope.article.created_at = curr_date + "-" + curr_month + "-" + curr_year;
+                articlesService.saveArticle($scope.article).then(function () {
+                    $window.location.href = "#/Articles";
+                });
             });
-                            });
         };
 
         $scope.deleteArticle = function (id) {
