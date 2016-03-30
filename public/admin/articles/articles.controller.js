@@ -5,7 +5,7 @@
         .module("admin.articles", [])
         .controller("articlesController", articlesController);
 
-    function articlesController($scope, articlesService, $window) {
+    function articlesController($scope, articlesService, usersService, $window) {
 
         var getArticles = function () {
             articlesService.getArticles().then(function (articles) {
@@ -27,6 +27,8 @@
         };
 
         $scope.createArticle = function () {
+            var currentUser = usersService.getCurrentUser();
+            console.log(currentUser);
             articlesService.saveArticle($scope.article).then(function () {
                 $window.location.href = "#/Articles";
             });
