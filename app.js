@@ -18,7 +18,7 @@ var auth = require('./routes/auth')(passport);
 var app = express();
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/testing');
+mongoose.connect('mongodb://nicolai:hej123@ds013619.mlab.com:13619/meanstack');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
