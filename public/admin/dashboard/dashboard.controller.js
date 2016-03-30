@@ -5,8 +5,10 @@
         .module("admin.dashboard", [])
         .controller("dashboardController", dashboardController);
 
-    function dashboardController($scope) {
+    function dashboardController($scope, dashboardService) {
         $scope.visitors = [];
+        
+        $scope.status = "test";
     }
 
 

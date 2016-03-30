@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var flash = require('connect-flash');
 
 require('./models/models');
 
@@ -45,6 +46,7 @@ app.use(cookieParser());
 app.use(session({
     secret: 'library'
 }));
+app.use(flash());
 
 require('./src/config/passport')(app);
 app.use(express.static(path.join(__dirname, 'public')));

@@ -6,9 +6,14 @@
         var getVisitors = function () {
 
         }
+        
+        var getUserStatus = function () {
+            return $http.get('/status/');
+        };
 
         return {
-            getVisitors: getVisitors
+            getVisitors: getVisitors,
+            getUserStatus: getUserStatus
         }
 
     }

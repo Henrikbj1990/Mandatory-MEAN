@@ -23,7 +23,7 @@ module.exports = function () { //signup strategy
                 // already exists
                 if (user) {
                     console.log('User already exists with username: ' + username);
-                    return done(null, false);
+                    return done(null, false, { message: 'Username already exist' });
                 } else {
                     // if there is no user, create the user
                     var newUser = new User();
@@ -61,12 +61,12 @@ module.exports = function () { //signup strategy
                     // Username does not exist, log error & redirect back
                     if (!user) {
                         console.log('User Not Found with username ' + username);
-                        return done(null, false);
+                        return done(null, false, { message: 'Invalid username' });
                     }
                     // User exists but wrong password, log the error 
                     if (!isValidPassword(user, password)) {
                         console.log('Invalid Password');
-                        return done(null, false);
+                        return done(null, false, { message: 'Invalid password' });
                     }
                     // User and password both match, return user from 
                     // done method which will be treated like success

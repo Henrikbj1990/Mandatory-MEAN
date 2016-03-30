@@ -15,4 +15,5 @@ $(function () {
         e.preventDefault();
     });
 
+    $('div.error:empty').hide();
 });
