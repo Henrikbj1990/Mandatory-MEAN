@@ -27,11 +27,16 @@
         };
 
         $scope.createArticle = function () {
-            var currentUser = usersService.getCurrentUser();
-            console.log(currentUser);
+            var userName = "";
+            var currentUser = usersService.getCurrentUser().then(function (user) {
+            userName = user.username;
+
+            $scope.article.created_by = userName;
+            $scope.article.created_at = new Date();
             articlesService.saveArticle($scope.article).then(function () {
                 $window.location.href = "#/Articles";
             });
+                            });
         };
 
         $scope.deleteArticle = function (id) {
