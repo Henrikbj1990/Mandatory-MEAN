@@ -21,6 +21,12 @@
             });
         };
 
+        var getCategories = function () {
+            articlesService.getCategories().then(function (categories) {
+                $scope.categories = categories;
+            });
+        };
+
         $scope.editArticle = function (id) {
             articlesService.getArticle(id).then(function (article) {
                 $scope.article = article;
@@ -92,6 +98,7 @@
 
         getArticles();
         getTags();
+        getCategories();
     }
 
 })();

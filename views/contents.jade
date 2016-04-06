@@ -2,21 +2,44 @@ extends layout
 
 block content
     .container(ng-controller="controller")
-        .tagList
-          p.label.label-warning.tagItem(ng-click='resetFilter()') Reset
-          p.label.label-primary.tagItem(ng-repeat='tag in allTags', id='{{tag._id}}', ng-click='filterTag(tag.name)') {{tag.name}}
-        h4 Filter: {{filter}}
-        .col-md-12(ng-repeat='article in articles | orderBy: "-_id" | filter: filter')
+        .jumbotron
+            ul.nav.nav-pills.nav-justified
+              li.active(role='presentation')
+                a(href='#tags', data-toggle='tab') Tags
+              li(role='presentation')
+                a(href='#categories', data-toggle='tab') Categories
+              li(role='presentation')
+                a(href='#search', data-toggle='tab') Search
+            .tab-content
+                .tab-pane.fade.in.active(id='tags')
+                    .tagList
+                      span.label.label-warning.tagItem(ng-click='resetFilter()') Reset
+                      span.label.label-primary.tagItem(ng-repeat='tag in allTags', id='{{tag._id}}', ng-click='filterTag(tag.name)') {{tag.name}}
+                    h4 Filter: {{filter}}
+                .tab-pane.fade(id='categories')
+                    .row.tagList
+                        span.label.label-success.categoryItem(ng-repeat='category in categories', ng-click='filterCategory(category.name)') {{category.name}}
+                .tab-pane.fade(id='search', class="tab-pane fade")
+                    .row
+                      .col-lg-3
+                      .col-lg-6
+                        .input-group
+                          input.form-control(type='text', ng-model='searchInput', placeholder='Search for...')
+                          span.input-group-btn
+                            button.btn.btn-default(type='button', ng-click='filterTag(searchInput)') Go!
+                      .col-lg-3
+        .col-md-12(ng-repeat='article in articles | orderBy: "-_id" | filter: filter', ng-class-odd="'articleOdd'" ng-class-even="'articleEven'")
             h1 {{article.title}}
             p
               i Posted by: {{article.created_by}}
             p
               {{article.body}}
             div
-              span.badge Posted {{article.created_at}}
+              span.label.label-default {{article.created_at}}
+              &nbsp;
+              span.label.label-success {{article.category}}
               .pull-right(ng-repeat='tag in article.tags')
                     span.tagItem.label.label-primary(ng-click='filterTag(tag)') {{tag}}
                     &nbsp;
-            hr
 
 

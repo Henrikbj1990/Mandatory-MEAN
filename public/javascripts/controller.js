@@ -12,6 +12,11 @@
         $scope.filterTag = function (tag) {
             $scope.filter = tag;
         }
+        $scope.filterCategory = function (category) {
+            $scope.filter = {
+                category: category
+            };
+        }
 
         $scope.resetFilter = function () {
             $scope.filter = "";
@@ -24,12 +29,18 @@
             });
         };
         var getTags = function () {
-            service.getTags().then(function (articles) {
-                $scope.allTags = articles;
+            service.getTags().then(function (allTags) {
+                $scope.allTags = allTags;
+            });
+        };
+        var getCategories = function () {
+            service.getCategories().then(function (categories) {
+                $scope.categories = categories;
             });
         };
         getArticles();
         getTags();
+        getCategories();
     }
 
 })();

@@ -14,9 +14,16 @@
                     return res.data;
                 });
         };
+        var getCategories = function () {
+            return $http.get('/categories/')
+                .then(function (res) {
+                    return res.data;
+                });
+        };
         return {
             getArticles: getArticles,
-            getTags: getTags
+            getTags: getTags,
+            getCategories: getCategories
         };
     }
 

@@ -12,6 +12,7 @@ var articleSchema = new mongoose.Schema({
     created_at: String,
     title: String,
     body: String,
+    category: String,
     tags: []
 });
 
@@ -19,6 +20,11 @@ var tagSchema = new mongoose.Schema({
     name: String
 });
 
+var categorySchema = new mongoose.Schema({
+    name: String
+});
+
 mongoose.model('User', userSchema);
 mongoose.model('Article', articleSchema);
 mongoose.model('Tag', tagSchema);
+mongoose.model('Category', categorySchema);
