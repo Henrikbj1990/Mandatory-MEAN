@@ -30,6 +30,10 @@
                 <h4 class="modal-title">Edit Article</h4>
             </div>
             <div class="modal-body">
+                <h4>Tags</h4>
+                <div ng-repeat="tag in article.tags" class="tagList">
+                    <span class="label label-primary tagItem">{{tag}}</span>
+                </div>
                 <form>
                     <div class="form-group">
                         <label for="username">Title</label>
@@ -37,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         <label for="name">Body</label>
-                        <textarea type="text" class="form-control" id="body" ng-model="article.body" placeholder="Content"/>
+                        <textarea type="text" class="form-control" id="body" ng-model="article.body" placeholder="Content" />
                     </div>
                 </form>
             </div>

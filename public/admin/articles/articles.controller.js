@@ -39,13 +39,10 @@
                 userName = user.username;
 
                 $scope.article.created_by = userName;
-                var d = new Date();
-                var curr_date = d.getDate();
-                var curr_month = d.getMonth() + 1; //Months are zero based
-                var curr_year = d.getFullYear();
+                var date = formattedDate(new Date())
                 $scope.article.tags = array;
 
-                $scope.article.created_at = curr_date + "-" + curr_month + "-" + curr_year;
+                $scope.article.created_at = date;
                 articlesService.saveArticle($scope.article).then(function () {
                     $window.location.href = "#/Articles";
                 });
