@@ -1,18 +1,11 @@
 extends layout
 
 block content
-<<<<<<< HEAD
     .container(ng-controller="controller")
         .col-md-12(ng-repeat='article in articles | orderBy: "-_id"')
             h1 {{article.title}}
             p
               {{article.created_by}}
-            p
-              {{article.content}}
-=======
-    .container
-        .col-md-12(ng-repeat='article in articles')
-            h1 {{article.title}}
             p
               {{article.body}}
             div
