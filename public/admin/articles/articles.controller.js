@@ -83,6 +83,12 @@
             }
             console.log(array);
         }
+        $scope.remove = function (tags, tag) {
+            console.log(tags);
+            var index = tags.indexOf(tag);
+            tags.splice(index, 1);
+            console.log(tags);
+        }
 
         getArticles();
         getTags();

@@ -30,9 +30,9 @@
                 <h4 class="modal-title">Edit Article</h4>
             </div>
             <div class="modal-body">
-                <h4>Tags</h4>
-                <div ng-repeat="tag in article.tags" class="tagList">
-                    <span class="label label-primary tagItem">{{tag}}</span>
+                <h4>Remove Tags</h4>
+                <div ng-repeat="tag in article.tags track by $index" class="tagList">
+                    <span class="label label-primary tagItem" ng-click="remove(article.tags, tag)">{{tag}}</span>
                 </div>
                 <form>
                     <div class="form-group">
