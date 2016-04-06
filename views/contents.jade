@@ -1,25 +1,18 @@
 extends layout
 
 block content
-    .container
-        .col-md-12(ng-repeat='article in articles')
+    .container(ng-controller="controller")
+        .col-md-12(ng-repeat='article in articles | orderBy: "-_id"')
             h1 {{article.title}}
+            p
+              i Posted by: {{article.created_by}}
             p
               {{article.body}}
             div
               span.badge Posted {{article.created_at}}
-              .pull-right
-                span.label.label-default alice
-                &nbsp;
-                span.label.label-primary story
-                &nbsp;
-                span.label.label-success blog
-                &nbsp;
-                span.label.label-info personal
-                &nbsp;
-                span.label.label-warning Warning
-                &nbsp;
-                span.label.label-danger Danger
+              .pull-right(ng-repeat='tag in article.tags')
+                    span.label.label-primary {{tag}}
+                    &nbsp;
             hr
 
 

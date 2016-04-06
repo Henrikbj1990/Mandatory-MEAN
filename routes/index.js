@@ -4,7 +4,9 @@ var router = express.Router();
 /* GET home page. */
 router.get('/',
     function (req, res, next) {
-        res.redirect('/layout.html');
+        res.render('index', {
+            title: 'Frontpage',
+        })
     });
 
 router.get('/login', function (req, res, next) {

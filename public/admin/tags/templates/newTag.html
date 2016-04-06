@@ -5,21 +5,14 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h4>Tags</h4>
-                            <div ng-repeat="tag in tags" class="tagList">
-                                <span class="label label-primary tagItem" id="{{tag._id}}" ng-click="addTag(tag.name, tag._id)">{{tag.name}}</span>
-                            </div>
                             <form>
                                 <div class="form-group">
-                                    <input id="title" type="text" ng-model="article.title" name="title" tabindex="1" placeholder="Title" value="" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <textarea id="content" height="300" ng-model="article.body" name="content" placeholder="Content" value="" class="form-control" />
+                                    <input id="name" type="text" ng-model="tag.name" name="name" tabindex="1" placeholder="Name" value="" class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <button class="btn btn-primary" ng-click="createArticle()">Create Article</button>
+                                            <button class="btn btn-primary" ng-click="createTag()">Create Tag</button>
                                         </div>
                                     </div>
                                 </div>
