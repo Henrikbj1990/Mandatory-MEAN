@@ -3,7 +3,7 @@ var router = express.Router();
 module.exports = function (passport) {
 
     router.post('/login', passport.authenticate('login', {
-        successRedirect: '/profile',
+        successRedirect: '/Profile',
         failureRedirect: '/login',
         failureFlash: true
     }));
@@ -12,17 +12,18 @@ module.exports = function (passport) {
         failureRedirect: '/login',
         failureFlash: true
     }));
-    
-router.route('/status')
-        .get(function (req, res) {
-           if (!req.user)
-               {
-                    res.send(false);
-               }
-            res.json({hej : "hej"});
-});
 
-router.route('/profile')
+    router.route('/status')
+        .get(function (req, res) {
+            if (!req.user) {
+                res.send(false);
+            }
+            res.json({
+                hej: "hej"
+            });
+        });
+
+    router.route('/Profile')
         .all(function (req, res, next) {
             if (!req.user) {
                 res.redirect('/');
@@ -30,10 +31,10 @@ router.route('/profile')
             next();
         })
         .get(function (req, res) {
-            res.json(req.user);
+            res.redirect('/#Profile');
         });
-    
-router.route('/admin+*')
+
+    router.route('/admin+*')
         .all(function (req, res, next) {
             if (!req.user) {
                 res.redirect('/');
@@ -43,6 +44,6 @@ router.route('/admin+*')
         .get(function (req, res) {
             res.redirect('/admin/admin.html');
         });
-    
+
     return router;
 }
