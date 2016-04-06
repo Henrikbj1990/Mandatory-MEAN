@@ -2,7 +2,11 @@ extends layout
 
 block content
     .container(ng-controller="controller")
-        .col-md-12(ng-repeat='article in articles | orderBy: "-_id"')
+        .tagList
+          p.label.label-warning.tagItem(ng-click='resetFilter()') Reset
+          p.label.label-primary.tagItem(ng-repeat='tag in allTags', id='{{tag._id}}', ng-click='filterTag(tag.name)') {{tag.name}}
+        h4 Filter: {{filter}}
+        .col-md-12(ng-repeat='article in articles | orderBy: "-_id" | filter: filter')
             h1 {{article.title}}
             p
               i Posted by: {{article.created_by}}
@@ -11,7 +15,7 @@ block content
             div
               span.badge Posted {{article.created_at}}
               .pull-right(ng-repeat='tag in article.tags')
-                    span.label.label-primary {{tag}}
+                    span.tagItem.label.label-primary(ng-click='filterTag(tag)') {{tag}}
                     &nbsp;
             hr
 

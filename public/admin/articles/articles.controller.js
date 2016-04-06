@@ -22,9 +22,9 @@
         };
 
         $scope.editArticle = function (id) {
-
             articlesService.getArticle(id).then(function (article) {
                 $scope.article = article;
+                array = article.tags;
             });
         };
 
@@ -77,13 +77,13 @@
                 $('#' + id).addClass("label-info");
             } else {
                 var index = array.indexOf(tag);
-                array.splice(index);
+                array.splice(index, 1);
                 $('#' + id).removeClass("label-info");
                 $('#' + id).addClass("label-primary");
             }
             console.log(array);
         }
-        $scope.remove = function (tags, tag) {
+        $scope.removeTag = function (tags, tag) {
             console.log(tags);
             var index = tags.indexOf(tag);
             tags.splice(index, 1);

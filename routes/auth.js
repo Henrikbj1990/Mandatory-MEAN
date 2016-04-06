@@ -31,7 +31,7 @@ module.exports = function (passport) {
             next();
         })
         .get(function (req, res) {
-            res.redirect('/#Profile');
+            res.json(user);
         });
 
     router.route('/admin+*')

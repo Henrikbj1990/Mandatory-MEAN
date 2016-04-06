@@ -37,14 +37,25 @@ router.delete('/:id', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-    console.log("test");
-    Tag.create(req.body, function (err, data) {
-        if (err) {
-            console.error(err);
-            return
+    Tag.findOne({
+        name: req.body.name
+    }, function (err, data) {
+        if (data == null) {
+            Tag.create(req.body, function (err, data) {
+                if (err) {
+                    console.error(err);
+                    return
+                }
+                res.json(data);
+            })
+        } else {
+            res.json({
+                err: "Tag already exists"
+            })
         }
-        res.json(data);
+
     });
+
 });
 
 router.post('/:id', function (req, res, next) {

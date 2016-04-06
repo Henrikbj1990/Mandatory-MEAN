@@ -27,8 +27,13 @@
         };
 
         $scope.createTag = function () {
-            tagsService.saveTag($scope.tag).then(function () {
-                $window.location.href = "#/Tags";
+            tagsService.saveTag($scope.tag).then(function (data) {
+                if (data.err) {
+                    $scope.error = true;
+                    $("#message").html(data.err);
+                } else {
+                    $window.location.href = "#/Tags";
+                }
             });
         };
 
