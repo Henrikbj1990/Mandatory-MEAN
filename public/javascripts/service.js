@@ -5,7 +5,6 @@
         var getArticles = function () {
             return $http.get('/articles/')
                 .then(function (res) {
-                    console.log("test");
                     return res.data;
                 });
         };

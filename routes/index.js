@@ -4,16 +4,16 @@ var router = express.Router();
 /* GET home page. */
 router.get('/',
     function (req, res, next) {
-        res.render('index', {
-            title: 'Frontpage'
-        });
+        res.redirect('/layout.html');
     });
 
 router.get('/login', function (req, res, next) {
-    res.render('login', {
-        title: 'Login'
+    res.render('login', 
+               {
+        title: 'Login',
+        message: req.flash('error')
+                })
     });
-});
 
 router.get('/contents', function (req, res, next) {
     res.render('contents', {

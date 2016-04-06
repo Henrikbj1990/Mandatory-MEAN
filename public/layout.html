@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.css">
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body ng-app="module">
+    <div>
+        <ng-include src="'/partials/navigation.html'"></ng-include>
+    </div>
+    <div>
+        <div class="container">
+        <ng-view></ng-view>
+        </div>
+    </div>
+    <script src="/components/jquery/dist/jquery.js"></script>
+    <script src="/components/angular/angular.js"></script>
+    <script src="/components/angular-route/angular-route.min.js"></script>
+    <script src="/components/angular-resource/angular-resource.min.js"></script>
+    <script src="/components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/javascripts/script.js"></script>
+    <script src="/module.js"></script>
+    <script src="/articles/articles.controller.js"></script>
+    <script src="/articles/articles.service.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 extends layout
 
 block content
+<<<<<<< HEAD
     .container(ng-controller="controller")
         .col-md-12(ng-repeat='article in articles | orderBy: "-_id"')
             h1 {{article.title}}
@@ -8,6 +9,13 @@ block content
               {{article.created_by}}
             p
               {{article.content}}
+=======
+    .container
+        .col-md-12(ng-repeat='article in articles')
+            h1 {{article.title}}
+            p
+              {{article.body}}
+>>>>>>> 7bd2b8fa67e8b90075ca921509550988bddd59cf
             div
               span.badge Posted {{article.created_at}}
               .pull-right
@@ -23,3 +31,5 @@ block content
                 &nbsp;
                 span.label.label-danger Danger
             hr
+
+

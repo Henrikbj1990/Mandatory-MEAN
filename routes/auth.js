@@ -4,12 +4,23 @@ module.exports = function (passport) {
 
     router.post('/login', passport.authenticate('login', {
         successRedirect: '/profile',
-        failureRedirect: '/login'
+        failureRedirect: '/login',
+        failureFlash: true
     }));
     router.post('/register', passport.authenticate('signup', {
         successRedirect: '/',
-        failureRedirect: '/login'
+        failureRedirect: '/login',
+        failureFlash: true
     }));
+    
+router.route('/status')
+        .get(function (req, res) {
+           if (!req.user)
+               {
+                    res.send(false);
+               }
+            res.json({hej : "hej"});
+});
 
 router.route('/profile')
         .all(function (req, res, next) {
@@ -22,7 +33,7 @@ router.route('/profile')
             res.json(req.user);
         });
     
-router.route('/admin/*')
+router.route('/admin+*')
         .all(function (req, res, next) {
             if (!req.user) {
                 res.redirect('/');
