@@ -35,9 +35,9 @@ block content
             p
               {{article.body}}
             div
-              span.label.label-default {{article.created_at}}
+              span.label.label-default.tagItem {{article.created_at}}
               &nbsp;
-              span.label.label-success {{article.category}}
+              span.label.label-success.tagItem(ng-click='filterCategory(article.category)') {{article.category}}
               .pull-right(ng-repeat='tag in article.tags')
                     span.tagItem.label.label-primary(ng-click='filterTag(tag)') {{tag}}
                     &nbsp;
