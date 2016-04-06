@@ -7,9 +7,17 @@
 
     function articlesController($scope, articlesService, usersService, $window) {
 
+        var userName = "";
+
         var getArticles = function () {
             articlesService.getArticles().then(function (articles) {
                 $scope.articles = articles;
+            });
+        };
+
+        var getTags = function () {
+            articlesService.getTags().then(function (tags) {
+                $scope.tags = tags;
             });
         };
 
@@ -35,6 +43,8 @@
                 var curr_date = d.getDate();
                 var curr_month = d.getMonth() + 1; //Months are zero based
                 var curr_year = d.getFullYear();
+                $scope.article.tags = array;
+
                 $scope.article.created_at = curr_date + "-" + curr_month + "-" + curr_year;
                 articlesService.saveArticle($scope.article).then(function () {
                     $window.location.href = "#/Articles";
@@ -61,7 +71,24 @@
             });
         };
 
+        var array = [];
+
+        $scope.addTag = function (tag, id) {
+            if ($.inArray(tag, array) == -1) {
+                array.push(tag);
+                $('#' + id).removeClass("label-primary");
+                $('#' + id).addClass("label-info");
+            } else {
+                var index = array.indexOf(tag);
+                array.splice(index);
+                $('#' + id).removeClass("label-info");
+                $('#' + id).addClass("label-primary");
+            }
+            console.log(array);
+        }
+
         getArticles();
+        getTags();
     }
 
 })();

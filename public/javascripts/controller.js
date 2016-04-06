@@ -10,6 +10,7 @@
         var getArticles = function () {
             service.getArticles().then(function (articles) {
                 $scope.articles = articles;
+                $scope.tags = articles.tags;
             });
         };
         getArticles();

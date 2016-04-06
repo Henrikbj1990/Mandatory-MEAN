@@ -20,6 +20,13 @@
                 });
         };
 
+        var getTags = function () {
+            return $http.get('/tags/')
+                .then(function (res) {
+                    return res.data;
+                });
+        };
+
         var saveArticle = function (articledata) {
             return Article.save(articledata).$promise;
         };
@@ -34,7 +41,8 @@
             getArticle: getArticle,
             getArticles: getArticles,
             saveArticle: saveArticle,
-            deleteArticle: deleteArticle
+            deleteArticle: deleteArticle,
+            getTags: getTags
         };
 
     }

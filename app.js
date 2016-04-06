@@ -13,16 +13,17 @@ require('./models/models');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var articles = require('./routes/articles');
+var tags = require('./routes/tags');
 var admin = require('./routes/admin');
 var auth = require('./routes/auth')(passport);
 
 var app = express();
 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://nicolai:hej123@ds013619.mlab.com:13619/meanstack');
-
 //var mongoose = require('mongoose');
-//mongoose.connect('mongodb://localhost/testing');
+//mongoose.connect('mongodb://nicolai:hej123@ds013619.mlab.com:13619/meanstack');
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/testing');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -56,6 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/articles', articles);
+app.use('/tags', tags);
 app.use('/', auth);
 app.use('/admin', admin);
 

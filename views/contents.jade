@@ -10,18 +10,9 @@ block content
               {{article.body}}
             div
               span.badge Posted {{article.created_at}}
-              .pull-right
-                span.label.label-default alice
-                &nbsp;
-                span.label.label-primary story
-                &nbsp;
-                span.label.label-success blog
-                &nbsp;
-                span.label.label-info personal
-                &nbsp;
-                span.label.label-warning Warning
-                &nbsp;
-                span.label.label-danger Danger
+              .pull-right(ng-repeat='tag in article.tags')
+                    span.label.label-primary {{tag}}
+                    &nbsp;
             hr
 
 

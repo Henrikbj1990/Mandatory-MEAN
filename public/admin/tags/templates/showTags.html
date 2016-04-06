@@ -1,0 +1,45 @@
+<a href="#/newTag" type "button" class="btn btn-block btn-primary">Create Tag</a>
+</br>
+<table class="table userTable table-bordered table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr ng-repeat="tag in tags">
+        <td>{{tag.name}}</td>
+        <td>
+            <button ng-click="editTag(tag._id)" data-toggle="modal" data-target="#myModal" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+        </td>
+        <td>
+            <button ng-click="deleteTag(tag._id)" class="btn btn-danger"><span class="glyphicon glyphicon-fire"></span> Delete</button>
+        </td>
+    </tr>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Tag</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="username">Title</label>
+                        <input type="text" class="form-control" id="name" ng-model="tag.name" placeholder="Name">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="saveTag()" data-dismiss="modal">Save Tag</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
