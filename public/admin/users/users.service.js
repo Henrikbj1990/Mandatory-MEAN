@@ -10,7 +10,6 @@
         var getCurrentUser = function () {
             return $http.get('/profile')
             .then(function (res){
-                console.log(res.data);
                 return res.data;
             })
         }

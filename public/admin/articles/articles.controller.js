@@ -27,17 +27,27 @@
         };
 
         $scope.createArticle = function () {
-            var userName = "";
             var currentUser = usersService.getCurrentUser().then(function (user) {
-            userName = user.username;
-
-            $scope.article.created_by = userName;
-            $scope.article.created_at = new Date();
-            articlesService.saveArticle($scope.article).then(function () {
-                $window.location.href = "#/Articles";
+                $scope.article.created_by = user.username;
+                $scope.article.created_at = formattedDate(new Date());
+                articlesService.saveArticle($scope.article).then(function () {
+                    $window.location.href = "#/Articles";
+                });
             });
-                            });
         };
+
+        function formattedDate(date) {
+            var d = new Date(date || Date.now()),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [day, month, year].join('/');
+        }
+
 
         $scope.deleteArticle = function (id) {
             articlesService.deleteArticle(id).then(function () {
