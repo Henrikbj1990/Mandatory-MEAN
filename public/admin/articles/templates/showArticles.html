@@ -30,9 +30,13 @@
                 <h4 class="modal-title">Edit Article</h4>
             </div>
             <div class="modal-body">
+                <h4>Category</h4>
+                <select ng-model="article.category" class="form-control">
+                    <option ng-repeat="category in categories">{{category.name}}</option>
+                </select>
                 <h4>Remove Tags</h4>
-                <div ng-repeat="tag in article.tags track by $index" class="tagList">
-                    <span class="label label-primary tagItem" ng-click="remove(article.tags, tag)">{{tag}}</span>
+                <div class="tagList">
+                    <p ng-repeat="tag in article.tags track by $index" class="label label-primary tagItem" ng-click="removeTag(article.tags, tag)">{{tag}}</p>
                 </div>
                 <form>
                     <div class="form-group">

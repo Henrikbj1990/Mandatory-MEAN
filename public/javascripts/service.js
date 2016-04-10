@@ -8,8 +8,22 @@
                     return res.data;
                 });
         };
+        var getTags = function () {
+            return $http.get('/tags/')
+                .then(function (res) {
+                    return res.data;
+                });
+        };
+        var getCategories = function () {
+            return $http.get('/categories/')
+                .then(function (res) {
+                    return res.data;
+                });
+        };
         return {
-            getArticles: getArticles
+            getArticles: getArticles,
+            getTags: getTags,
+            getCategories: getCategories
         };
     }
 

@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    var admin = angular.module("admin", ["admin.dashboard", "admin.users", "admin.articles", "admin.tags", "ngRoute", "ngResource"]);
+    var admin = angular.module("admin", ["admin.dashboard", "admin.users", "admin.articles", "admin.tags", "admin.categories", "ngRoute", "ngResource"]);
     admin.config(function ($routeProvider) {
 
         $routeProvider
@@ -38,8 +38,19 @@
 
         .when('/newTag', {
 
-            templateUrl: './tags/templates/newTag.html',
-            controller: 'tagsController'
+                templateUrl: './tags/templates/newTag.html',
+                controller: 'tagsController'
+            })
+            .when('/Categories', {
+
+                templateUrl: './categories/templates/showCategories.html',
+                controller: 'categoriesController'
+            })
+
+        .when('/newCategory', {
+
+            templateUrl: './categories/templates/newCategory.html',
+            controller: 'categoriesController'
         })
 
         .when('/', {

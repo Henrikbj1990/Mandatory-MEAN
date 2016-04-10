@@ -14,6 +14,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var articles = require('./routes/articles');
 var tags = require('./routes/tags');
+var categories = require('./routes/categories');
 var admin = require('./routes/admin');
 var auth = require('./routes/auth')(passport);
 
@@ -58,6 +59,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/articles', articles);
 app.use('/tags', tags);
+app.use('/categories', categories);
 app.use('/', auth);
 app.use('/admin', admin);
 

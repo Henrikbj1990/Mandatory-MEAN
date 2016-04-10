@@ -5,9 +5,15 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
+                            <h4>Category</h4>
+                            <div class="">
+                                <select ng-model="article.category" class="form-control">
+                                    <option ng-repeat="category in categories">{{category.name}}</option>
+                                </select>
+                            </div>
                             <h4>Tags</h4>
-                            <div ng-repeat="tag in tags" class="tagList">
-                                <span class="label label-primary tagItem" id="{{tag._id}}" ng-click="addTag(tag.name, tag._id)">{{tag.name}}</span>
+                            <div class="tagList">
+                                <p ng-repeat="tag in tags" class="label label-primary tagItem" id="{{tag._id}}" ng-click="addTag(tag.name, tag._id)">{{tag.name}}</p>
                             </div>
                             <form>
                                 <div class="form-group">

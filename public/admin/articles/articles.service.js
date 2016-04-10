@@ -26,6 +26,12 @@
                     return res.data;
                 });
         };
+        var getCategories = function () {
+            return $http.get('/categories/')
+                .then(function (res) {
+                    return res.data;
+                });
+        };
 
         var saveArticle = function (articledata) {
             return Article.save(articledata).$promise;
@@ -42,7 +48,8 @@
             getArticles: getArticles,
             saveArticle: saveArticle,
             deleteArticle: deleteArticle,
-            getTags: getTags
+            getTags: getTags,
+            getCategories: getCategories
         };
 
     }

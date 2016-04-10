@@ -7,13 +7,40 @@
 
     function controller($scope, service) {
 
+        $scope.filter = "";
+
+        $scope.filterTag = function (tag) {
+            $scope.filter = tag;
+        }
+        $scope.filterCategory = function (category) {
+            $scope.filter = {
+                category: category
+            };
+        }
+
+        $scope.resetFilter = function () {
+            $scope.filter = "";
+        }
+
         var getArticles = function () {
             service.getArticles().then(function (articles) {
                 $scope.articles = articles;
                 $scope.tags = articles.tags;
             });
         };
+        var getTags = function () {
+            service.getTags().then(function (allTags) {
+                $scope.allTags = allTags;
+            });
+        };
+        var getCategories = function () {
+            service.getCategories().then(function (categories) {
+                $scope.categories = categories;
+            });
+        };
         getArticles();
+        getTags();
+        getCategories();
     }
 
 })();
