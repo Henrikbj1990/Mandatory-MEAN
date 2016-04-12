@@ -2,6 +2,11 @@
     "use strict";
 
     function service($http, $resource) {
+
+        var User = $resource("/currentUser", {
+
+        });
+
         var getArticles = function () {
             return $http.get('/articles/')
                 .then(function (res) {
@@ -20,10 +25,14 @@
                     return res.data;
                 });
         };
+        var getProfile = function () {
+            return User.get().$promise;
+        };
         return {
             getArticles: getArticles,
             getTags: getTags,
-            getCategories: getCategories
+            getCategories: getCategories,
+            getProfile: getProfile
         };
     }
 

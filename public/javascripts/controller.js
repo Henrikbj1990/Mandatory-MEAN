@@ -22,6 +22,12 @@
             $scope.filter = "";
         }
 
+        var getProfile = function () {
+            service.getProfile().then(function (profile) {
+                $scope.profile = profile;
+            });
+        }
+
         var getArticles = function () {
             service.getArticles().then(function (articles) {
                 $scope.articles = articles;
@@ -41,6 +47,7 @@
         getArticles();
         getTags();
         getCategories();
+        getProfile();
     }
 
 })();

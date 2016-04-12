@@ -6,12 +6,12 @@
         var User = $resource("/users/:id", {
             id: '@_id'
         });
-        
+
         var getCurrentUser = function () {
-            return $http.get('/profile')
-            .then(function (res){
-                return res.data;
-            })
+            return $http.get('/currentUser')
+                .then(function (res) {
+                    return res.data;
+                })
         }
 
         var getUser = function (id) {
