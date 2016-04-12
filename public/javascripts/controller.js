@@ -11,15 +11,19 @@
 
         $scope.filterTag = function (tag) {
             $scope.filter = tag;
+            $scope.articleFilter = tag;
         }
         $scope.filterCategory = function (category) {
             $scope.filter = {
                 category: category
             };
+            $scope.articleFilter = category;
         }
 
         $scope.resetFilter = function () {
             $scope.filter = "";
+            $scope.articleFilter = "";
+
         }
 
         var getArticles = function () {
