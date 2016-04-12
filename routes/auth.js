@@ -15,13 +15,24 @@ module.exports = function (passport) {
         failureRedirect: '/login',
         failureFlash: true
     }));
-
+    router.get('/logout', function (req, res) {
+        req.logout();
+        res.redirect('/');
+    });
     router.get('/currentUser', function (req, res, next) {
-        User.findOne({
-            _id: req.user.id
-        }, function (err, data) {
-            res.json(data);
-        });
+        if (req.user) {
+            User.findOne({
+                _id: req.user.id
+            }, function (err, data) {
+                if (err) {
+                    res.json({
+                        err: err
+                    });
+                } else {
+                    res.status(200).json(data);
+                }
+            });
+        }
     });
 
     router.route('/profile')

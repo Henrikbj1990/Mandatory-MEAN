@@ -61,4 +61,7 @@
                 redirectTo: '/'
             })
     });
+    admin.run(function ($rootScope) {
+        $rootScope.authenticated = false;
+    });
 }());

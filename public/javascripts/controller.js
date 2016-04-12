@@ -5,7 +5,7 @@
         .module("layout.module", [])
         .controller("controller", controller);
 
-    function controller($scope, service) {
+    function controller($http, $scope, $rootScope, service) {
 
         $scope.filter = "";
 
@@ -29,6 +29,7 @@
         var getProfile = function () {
             service.getProfile().then(function (profile) {
                 $scope.profile = profile;
+                $rootScope.authenticated = true;
             });
         }
 
@@ -48,6 +49,7 @@
                 $scope.categories = categories;
             });
         };
+
         getArticles();
         getTags();
         getCategories();

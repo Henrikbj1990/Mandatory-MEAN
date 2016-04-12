@@ -3,17 +3,12 @@
 
     function dashboardService($http) {
 
-        var getVisitors = function () {
-
-        }
-        
-        var getUserStatus = function () {
-            return $http.get('/status/');
+        var getProfile = function () {
+            return User.get().$promise;
         };
 
         return {
-            getVisitors: getVisitors,
-            getUserStatus: getUserStatus
+            getProfile: getProfile
         }
 
     }
