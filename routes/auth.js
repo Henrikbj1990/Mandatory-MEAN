@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+
 module.exports = function (passport) {
 
     router.post('/login', passport.authenticate('login', {
-        successRedirect: '/Profile',
+        successRedirect: '/profile',
         failureRedirect: '/login',
         failureFlash: true
     }));
@@ -13,17 +16,15 @@ module.exports = function (passport) {
         failureFlash: true
     }));
 
-    router.route('/status')
-        .get(function (req, res) {
-            if (!req.user) {
-                res.send(false);
-            }
-            res.json({
-                hej: "hej"
-            });
+    router.get('/currentUser', function (req, res, next) {
+        User.findOne({
+            _id: req.user.id
+        }, function (err, data) {
+            res.json(data);
         });
+    });
 
-    router.route('/Profile')
+    router.route('/profile')
         .all(function (req, res, next) {
             if (!req.user) {
                 res.redirect('/');
@@ -31,7 +32,9 @@ module.exports = function (passport) {
             next();
         })
         .get(function (req, res) {
-            res.json(user);
+            res.render('profile', {
+                title: 'Profile'
+            });
         });
 
     router.route('/admin+*')

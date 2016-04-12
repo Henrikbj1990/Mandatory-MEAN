@@ -6,4 +6,7 @@
 
 
     });
+    module.run(function ($rootScope) {
+        $rootScope.authenticated = false;
+    });
 }());

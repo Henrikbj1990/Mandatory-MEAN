@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    .container(ng-controller="controller")
+        h1 {{profile.username}}
+        h1 {{profile.email}}
+        h1
+            a(href='/admin/') Admin
