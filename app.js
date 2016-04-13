@@ -17,6 +17,7 @@ var tags = require('./routes/tags');
 var categories = require('./routes/categories');
 var admin = require('./routes/admin');
 var auth = require('./routes/auth')(passport);
+var profile = require('./routes/profile')(passport);
 
 var app = express();
 
@@ -60,6 +61,7 @@ app.use('/users', users);
 app.use('/articles', articles);
 app.use('/tags', tags);
 app.use('/categories', categories);
+app.use('/profile', profile);
 app.use('/', auth);
 app.use('/admin', admin);
 

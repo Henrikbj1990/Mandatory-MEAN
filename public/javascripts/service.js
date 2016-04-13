@@ -28,11 +28,15 @@
         var getProfile = function () {
             return User.get().$promise;
         };
+        var saveUser = function (userdata) {
+            return User.save(userdata).$promise;
+        };
         return {
             getArticles: getArticles,
             getTags: getTags,
             getCategories: getCategories,
-            getProfile: getProfile
+            getProfile: getProfile,
+            saveUser: saveUser
         };
     }
 

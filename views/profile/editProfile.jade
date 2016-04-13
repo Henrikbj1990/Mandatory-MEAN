@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+    .container(ng-controller="controller")
+        form.form-horizontal
+          fieldset
+            legend Edit profile
+            .form-group
+              label.col-md-4.control-label(for='name') Full name
+              .col-md-4
+                input#name.form-control.input-md(name='name', placeholder='Name', type='text', ng-model='profile.fullName')
+            .form-group
+              label.col-md-4.control-label(for='address') Address
+              .col-md-4
+                input#address.form-control.input-md(name='address', placeholder='Address', type='text', ng-model='profile.address')
+            .form-group
+              label.col-md-4.control-label(for='zip') Zip Code
+              .col-md-4
+                input#zip.form-control.input-md(name='zip', placeholder='Zip Code', type='text', ng-model='profile.zipCode')
+            .form-group
+              label.col-md-4.control-label(for='city') City
+              .col-md-4
+                input#city.form-control.input-md(name='city', placeholder='City', type='text', ng-model='profile.city')
+            .col-md-4
+            .col-md-2
+                button#cancel.btn.btn-default(name='cancel') Cancel
+            .col-md-2.text-right
+                button#save.btn.btn-primary(name='save', ng-click='saveUser()') Save
+            .col-md-4
+

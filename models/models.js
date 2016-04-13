@@ -4,7 +4,11 @@ var Schema = mongoose.Schema;
 var userSchema = new mongoose.Schema({
     username: String,
     email: String,
-    password: String //hash created from password
+    password: String,
+    fullName: String,
+    address: String,
+    zipCode: String,
+    city: String
 });
 
 var articleSchema = new mongoose.Schema({

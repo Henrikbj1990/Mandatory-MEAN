@@ -5,7 +5,7 @@
         .module("layout.module", [])
         .controller("controller", controller);
 
-    function controller($http, $scope, $rootScope, service) {
+    function controller($http, $scope, $rootScope, service, $location) {
 
         $scope.filter = "";
 
@@ -47,6 +47,11 @@
         var getCategories = function () {
             service.getCategories().then(function (categories) {
                 $scope.categories = categories;
+            });
+        };
+        $scope.saveUser = function () {
+            service.saveUser($scope.profile).then(function () {
+                $location.path('profile');
             });
         };
 

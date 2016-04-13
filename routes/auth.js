@@ -19,6 +19,7 @@ module.exports = function (passport) {
         req.logout();
         res.redirect('/');
     });
+
     router.get('/currentUser', function (req, res, next) {
         if (req.user) {
             User.findOne({
@@ -34,19 +35,24 @@ module.exports = function (passport) {
             });
         }
     });
-
-    router.route('/profile')
-        .all(function (req, res, next) {
-            if (!req.user) {
-                res.redirect('/');
-            }
-            next();
-        })
-        .get(function (req, res) {
-            res.render('profile', {
-                title: 'Profile'
+    router.post('/currentUser', function (req, res, next) {
+        if (req.user) {
+            var query = {
+                _id: req.user._id
+            };
+            User.findOneAndUpdate(query, req.body, function (err, data) {
+                if (err) {
+                    res.json({
+                        err: err
+                    });
+                } else {
+                    res.json({
+                        err: false
+                    });
+                }
             });
-        });
+        }
+    });
 
     router.route('/admin+*')
         .all(function (req, res, next) {
