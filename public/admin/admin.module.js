@@ -21,7 +21,8 @@
         .when('/Articles', {
 
             templateUrl: './articles/templates/showArticles.html',
-            controller: 'articlesController'
+            controller: 'articlesController',
+            isLogin: true
         })
 
         .when('/newArticle', {
@@ -61,7 +62,10 @@
                 redirectTo: '/'
             })
     });
-    admin.run(function ($rootScope) {
-        $rootScope.authenticated = false;
+    admin.run(function ($rootScope, usersService) {
+        usersService.getCurrentUser().then(function (user) {
+            $rootScope.currentUser = user;
+        })
+
     });
 }());
