@@ -23,7 +23,7 @@ block content
                 input#city.form-control.input-md(name='city', placeholder='City', type='text', ng-model='profile.city')
             .col-md-4
             .col-md-2
-                button#cancel.btn.btn-default(name='cancel') Cancel
+                button#cancel.btn.btn-default(name='back', onclick='new function(){history.back(1)}') Back
             .col-md-2.text-right
                 button#save.btn.btn-primary(name='save', ng-click='saveUser()') Save
             .col-md-4
