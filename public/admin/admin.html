@@ -12,7 +12,7 @@
     <div>
         <div class="container">
             <div class="row text-center">
-                <h1>Admin</h1>
+                <h1>Admin - {{currentUser.username}}</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -26,11 +26,10 @@
                                 <div class="col-xs-5 col-md-5">
                                     <a href="#/" class="btn btn-default btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Dashboard</a>
                                     <a href="/profile" class="btn btn-default btn-lg" role="button"><span class="glyphicon glyphicon-globe"></span> <br/>Profile</a>
-                                    <a href="#" class="btn btn-default btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>?</a>
                                 </div>
                                 <div class="col-xs-7 col-md-7">
-                                    <a href="#/Users" class="btn btn-default btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Users</a>
-                                    <a href="#" class="btn btn-default btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>?</a>
+                                    <a href="#/Users" ng-show="currentUser.role === 'Administrator'" class="btn btn-default btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Users</a>
+                                    <a href="#" ng-show="currentUser.role === 'Administrator'" class="btn btn-default btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>?</a>
                                     <a href="#/Articles" class="btn btn-default btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>Content</a>
                                     <a href="#/Categories" class="btn btn-default btn-lg" role="button"><span class="glyphicon glyphicon-th"></span> <br/>Categories</a>
                                     <a href="#/Tags" class="btn btn-default btn-lg" role="button"><span class="glyphicon glyphicon-tags"></span> <br/>Tags</a>

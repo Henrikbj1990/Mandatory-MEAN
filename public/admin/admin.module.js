@@ -21,7 +21,8 @@
         .when('/Articles', {
 
             templateUrl: './articles/templates/showArticles.html',
-            controller: 'articlesController'
+            controller: 'articlesController',
+            isLogin: true
         })
 
         .when('/newArticle', {
@@ -54,14 +55,20 @@
         })
 
         .when('/', {
-                templateUrl: '/admin/dashboard/view.html',
-                controller: 'dashboardController'
-            })
-            .otherwise({
-                redirectTo: '/'
-            })
+            templateUrl: '/admin/dashboard/view.html',
+            controller: 'dashboardController'
+        })
+
     });
-    admin.run(function ($rootScope) {
-        $rootScope.authenticated = false;
+    admin.run(function ($rootScope, usersService, $location) {
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
+            usersService.getCurrentUser().then(function (user) {
+                if (!user) {
+                    $location.path('/test')
+                }
+                $rootScope.currentUser = user;
+            })
+        });
+
     });
 }());
