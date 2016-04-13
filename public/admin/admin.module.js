@@ -55,17 +55,20 @@
         })
 
         .when('/', {
-                templateUrl: '/admin/dashboard/view.html',
-                controller: 'dashboardController'
-            })
-            .otherwise({
-                redirectTo: '/'
-            })
-    });
-    admin.run(function ($rootScope, usersService) {
-        usersService.getCurrentUser().then(function (user) {
-            $rootScope.currentUser = user;
+            templateUrl: '/admin/dashboard/view.html',
+            controller: 'dashboardController'
         })
+
+    });
+    admin.run(function ($rootScope, usersService, $location) {
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
+            usersService.getCurrentUser().then(function (user) {
+                if (!user) {
+                    $location.path('/test')
+                }
+                $rootScope.currentUser = user;
+            })
+        });
 
     });
 }());
