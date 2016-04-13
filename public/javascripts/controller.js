@@ -53,7 +53,6 @@
             service.saveUser($scope.profile).then(function () {
                 $('#alertBox').text("Success! It was saved.").show();
         });
-          
         };
 
         getArticles();

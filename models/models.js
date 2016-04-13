@@ -8,7 +8,12 @@ var userSchema = new mongoose.Schema({
     fullName: String,
     address: String,
     zipCode: String,
-    city: String
+    city: String,
+    role: String
+});
+
+var roleSchema = new mongoose.Schema({
+    name: String
 });
 
 var articleSchema = new mongoose.Schema({
@@ -32,3 +37,4 @@ mongoose.model('User', userSchema);
 mongoose.model('Article', articleSchema);
 mongoose.model('Tag', tagSchema);
 mongoose.model('Category', categorySchema);
+mongoose.model('Role', roleSchema);

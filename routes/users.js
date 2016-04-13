@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var Role = mongoose.model('Role');
 var bCrypt = require('bcrypt-nodejs');
 
 router.get('/', function (req, res, next) {
@@ -13,13 +14,24 @@ router.get('/', function (req, res, next) {
         return res.status(200).send(users);
     });
 });
+router.get('/roles', function (req, res, next) {
+    Role.find(function (err, roles) {
+        console.log('debug2');
+        if (err) {
+            return res.send(500, err);
+        }
+        return res.status(200).send(roles);
+    });
+});
 
 router.get('/:id', function (req, res, next) {
-    User.findOne({
-        _id: req.params.id
-    }, function (err, data) {
-        res.json(data);
-    });
+    User
+        .findOne({
+            _id: req.params.id
+        })
+        .exec(function (err, data) {
+            res.json(data);
+        })
 });
 
 router.delete('/:id', function (req, res, next) {

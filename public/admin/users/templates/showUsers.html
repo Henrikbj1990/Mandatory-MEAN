@@ -31,6 +31,10 @@
             </div>
             <div class="modal-body">
                 <form>
+                    <h4>Assign role</h4>
+                    <select ng-options="role.name for role.name in roles" ng-model="user.role" class="form-control">
+                    </select>
+                    <br/>
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" id="username" ng-model="user.username" placeholder="Username">
