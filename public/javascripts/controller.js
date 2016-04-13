@@ -50,9 +50,7 @@
             });
         };
         $scope.saveUser = function () {
-            service.saveUser($scope.profile).then(function () {
-                $location.path('profile');
-            });
+            service.saveUser($scope.profile).then(function () {});
         };
 
         getArticles();

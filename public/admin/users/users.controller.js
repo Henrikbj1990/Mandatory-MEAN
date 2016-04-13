@@ -12,6 +12,12 @@
                 $scope.users = users;
             });
         };
+        var getRoles = function () {
+            usersService.getRoles().then(function (roles) {
+                $scope.roles = roles;
+            });
+        };
+
 
         var resetUser = function () {
             $scope.user = $scope.user || {};
@@ -28,9 +34,10 @@
         };
 
         $scope.editUser = function (id) {
-
             usersService.getUser(id).then(function (user) {
                 $scope.user = user;
+                console.log($scope.user.role);
+
             });
         };
 
@@ -60,6 +67,7 @@
 
         getUsers();
         resetUser();
+        getRoles();
     }
 
 })();

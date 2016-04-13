@@ -26,6 +26,12 @@
                     return res.data;
                 });
         };
+        var getRoles = function () {
+            return $http.get('/users/roles/')
+                .then(function (res) {
+                    return res.data;
+                });
+        };
 
         var saveUser = function (userdata) {
             return User.save(userdata).$promise;
@@ -42,7 +48,8 @@
             getUsers: getUsers,
             saveUser: saveUser,
             deleteUser: deleteUser,
-            getCurrentUser: getCurrentUser
+            getCurrentUser: getCurrentUser,
+            getRoles: getRoles
         };
 
     }
