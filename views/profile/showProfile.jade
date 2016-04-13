@@ -2,7 +2,33 @@ extends ../layout
 
 block content
     .container(ng-controller="controller")
-        h1 {{profile.username}}
-        h1 {{profile.email}}
-        h1
-            a(href='/admin/') Admin
+        .col-xs-12
+            .panel.panel-info
+                .panel-heading
+                    h3.panel-title {{profile.fullName}}
+                .panel-body
+                    .row
+                        .col-md-3.col-lg-3(align='center')
+                            img.img-circle.img-responsive(alt='User Pic', src='http://placehold.it/300?text={{profile.username}}')
+                        .col-md-9.col-lg-9
+                            table.table.table-user-information
+                                tbody
+                                    tr
+                                        td Full name:
+                                        td {{profile.fullName}}
+                                    tr
+                                        td Username:
+                                        td {{profile.username}}
+                                    tr
+                                        td Address:
+                                        td {{profile.address}}
+                                    tr
+                                        td Zipcode:
+                                        td {{profile.zipCode}}
+                                    tr
+                                        td City:
+                                        td {{profile.city}}
+                                    tr
+                                        td Email:
+                                        td {{profile.email}}
+                            a.btn.btn-primary(href='editProfile') Edit my info

@@ -16,4 +16,6 @@ $(function () {
     });
 
     $('div.error:empty').hide();
+    
+    $('div.alert:empty').hide();
 });

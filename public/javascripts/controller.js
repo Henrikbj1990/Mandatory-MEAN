@@ -51,8 +51,9 @@
         };
         $scope.saveUser = function () {
             service.saveUser($scope.profile).then(function () {
-                $location.path('profile');
-            });
+                $('#alertBox').text("Success! It was saved.").show();
+        });
+          
         };
 
         getArticles();
