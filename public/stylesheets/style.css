@@ -13,6 +13,10 @@ body {
     min-height: 100vh;
 }
 
+.elementDown {
+    margin-top: 100px;
+}
+
 .paddingText {
     margin: 15% 30%;
     text-align: center;
