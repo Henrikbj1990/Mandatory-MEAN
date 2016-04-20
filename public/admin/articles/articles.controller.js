@@ -79,13 +79,13 @@
         $scope.addTag = function (tag, id) {
             if ($.inArray(tag, array) == -1) {
                 array.push(tag);
-                $('#' + id).removeClass("label-primary");
-                $('#' + id).addClass("label-info");
+                $('#' + id).removeClass("label-default");
+                $('#' + id).addClass("label-success");
             } else {
                 var index = array.indexOf(tag);
                 array.splice(index, 1);
-                $('#' + id).removeClass("label-info");
-                $('#' + id).addClass("label-primary");
+                $('#' + id).removeClass("label-success");
+                $('#' + id).addClass("label-default");
             }
             console.log(array);
         }

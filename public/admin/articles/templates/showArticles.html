@@ -34,9 +34,9 @@
                 <select ng-model="article.category" class="form-control">
                     <option ng-repeat="category in categories">{{category.name}}</option>
                 </select>
-                <h4>Remove Tags</h4>
+                 <h4>Avaliable tags(click to add)</h4>
                 <div class="tagList">
-                    <p ng-repeat="tag in article.tags track by $index" class="label label-primary tagItem" ng-click="removeTag(article.tags, tag)">{{tag}}</p>
+                    <p ng-repeat="tag in tags" class="label label-default tagItem" id="{{tag._id}}" ng-click="addTag(tag.name, tag._id)">{{tag.name}}</p>
                 </div>
                 <form>
                     <div class="form-group">
