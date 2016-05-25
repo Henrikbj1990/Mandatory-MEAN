@@ -2,20 +2,23 @@
     "use strict";
 
     var admin = angular.module("admin", ["admin.dashboard", "admin.users", "admin.articles", "admin.tags", "admin.categories", "ngRoute", "ngResource"]);
+
     admin.config(function ($routeProvider) {
 
         $routeProvider
 
             .when('/Users', {
-
+            isLogin: true,
             templateUrl: './users/templates/showUsers.html',
             controller: 'usersController'
+
         })
 
         .when('/newUser', {
 
             templateUrl: './users/templates/newUser.html',
-            controller: 'usersController'
+            controller: 'usersController',
+            isLogin: true
         })
 
         .when('/Articles', {
@@ -28,47 +31,48 @@
         .when('/newArticle', {
 
             templateUrl: './articles/templates/newArticle.html',
-            controller: 'articlesController'
+            controller: 'articlesController',
+            isLogin: true
         })
 
         .when('/Tags', {
 
             templateUrl: './tags/templates/showTags.html',
-            controller: 'tagsController'
+            controller: 'tagsController',
+            isLogin: true
         })
 
         .when('/newTag', {
 
                 templateUrl: './tags/templates/newTag.html',
-                controller: 'tagsController'
+                controller: 'tagsController',
+                isLogin: true
             })
             .when('/Categories', {
 
                 templateUrl: './categories/templates/showCategories.html',
-                controller: 'categoriesController'
+                controller: 'categoriesController',
+                isLogin: true
             })
 
         .when('/newCategory', {
 
             templateUrl: './categories/templates/newCategory.html',
-            controller: 'categoriesController'
+            controller: 'categoriesController',
+            isLogin: true
         })
 
         .when('/', {
             templateUrl: '/admin/dashboard/view.html',
-            controller: 'dashboardController'
+            controller: 'dashboardController',
+            isLogin: true
         })
 
     });
-    admin.run(function ($rootScope, usersService, $location) {
-        $rootScope.$on("$routeChangeStart", function (event, next, current) {
-            usersService.getCurrentUser().then(function (user) {
-                if (!user) {
-                    $location.path('/test')
-                }
-                $rootScope.currentUser = user;
-            })
-        });
+    admin.run(function ($rootScope, usersService) {
+        usersService.getCurrentUser().then(function (user) {
+            $rootScope.currentUser = user;
+        })
+    })
 
-    });
 }());

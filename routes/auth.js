@@ -21,19 +21,21 @@ module.exports = function (passport) {
     });
 
     router.get('/currentUser', function (req, res, next) {
-        if (req.user) {
-            User.findOne({
-                _id: req.user.id
-            }, function (err, data) {
-                if (err) {
-                    res.json({
-                        err: err
-                    });
-                } else {
-                    res.status(200).json(data);
-                }
-            });
+        if (req.user == undefined) {
+            res.status(200);
         }
+        User.findOne({
+            _id: req.user.id
+        }, function (err, data) {
+            if (err) {
+                res.json({
+                    err: err
+                });
+            } else {
+                res.status(200).json(data);
+            }
+        });
+
     });
     router.post('/currentUser', function (req, res, next) {
         if (req.user) {
@@ -52,6 +54,7 @@ module.exports = function (passport) {
                 }
             });
         }
+
     });
 
     router.route('/admin+*')
